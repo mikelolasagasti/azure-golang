@@ -51,8 +51,8 @@ for test in "TestRecordingHTTPClient_Do" \
 ; do
 awk -i inplace '/^func.*'"$test"'\(/ { print; print "\tt.Skip(\"disabled failing test\")"; next}1' $(grep -rl $test)
 done
-%gocheck
-# -d sdk/internal/recording -d sdk/internal/poller
+%gocheck -d sdk/internal/recording
+#  -d sdk/internal/poller
 %endif
 
 %gopkgfiles
