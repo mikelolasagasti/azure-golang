@@ -3,7 +3,7 @@
 %global debug_package %{nil}
 
 # https://github.com/Azure/azure-sdk-for-go
-%global goipath         github.com/Azure/azure-sdk-for-go
+%global goipath         github.com/Azure/azure-sdk-for-go/sdk/azcore
 Version:                1.6.1
 %global tag             sdk/azcore/v1.6.1
 
@@ -19,7 +19,7 @@ consumers of the SDK we recommend visiting our public developer docs at:.}
                         SECURITY.md README.md sdk/azcore/CHANGELOG.md \\\
                         sdk/azcore/README.md
 
-Name:           golang-github-azure-sdk-azcore
+Name:           %{goname}
 Release:        %autorelease
 Summary:        This repository is for active development of the Azure SDK for Go. For consumers of the SDK we recommend visiting our public developer docs at:
 
@@ -41,8 +41,12 @@ rm -rf azidentity containers data internal keyvault messaging monitor resourcema
 rm -rf azcore/testdata/
 popd
 
+mv sdk/azcore/* .
+
 %generate_buildrequires
 %go_generate_buildrequires
+
+
 
 %install
 %gopkginstall
