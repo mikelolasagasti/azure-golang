@@ -19,7 +19,7 @@ consumers of the SDK we recommend visiting our public developer docs at:.}
                         SECURITY.md README.md sdk/azcore/CHANGELOG.md \\\
                         sdk/azcore/README.md
 
-Name:           %{goname}
+Name:           golang-github-azure-sdk-azcore
 Release:        %autorelease
 Summary:        This repository is for active development of the Azure SDK for Go. For consumers of the SDK we recommend visiting our public developer docs at:
 
