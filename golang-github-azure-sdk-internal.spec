@@ -3,7 +3,7 @@
 %global debug_package %{nil}
 
 # https://github.com/Azure/azure-sdk-for-go
-%global goipath         github.com/Azure/azure-sdk-for-go/
+%global goipath         github.com/Azure/azure-sdk-for-go
 Version:                1.3.0
 %global tag             sdk/internal/v1.3.0
 
