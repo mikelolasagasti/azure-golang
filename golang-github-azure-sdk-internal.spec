@@ -9,8 +9,8 @@ Version:                1.3.0
 
 %gometa -f
 
-%global goipaths0       github.com/Azure/azure-sdk-for-go/sdk/internal
-%global goipathsex0     github.com/Azure/azure-sdk-for-go
+#%%global goipaths0       github.com/Azure/azure-sdk-for-go/sdk/internal diag github.com/Azure/azure-sdk-for-go/sdk/internal/errorinfo github.com/Azure/azure-sdk-for-go/sdk/internal/exported github.com/Azure/azure-sdk-for-go/sdk/internal/log github.com/Azure/azure-sdk-for-go/sdk/internal/mock github.com/Azure/azure-sdk-for-go/sdk/internal/perf github.com/Azure/azure-sdk-for-go/sdk/internal/poller github.com/Azure/azure-sdk-for-go/sdk/internal/recording github.com/Azure/azure-sdk-for-go/sdk/internal/telemetry github.com/Azure/azure-sdk-for-go/sdk/internal/temporal github.com/Azure/azure-sdk-for-go/sdk/internal/uuid
+#%%global goipathsex0     github.com/Azure/azure-sdk-for-go/sdk
 
 %global common_description %{expand:
 This repository is for active development of the Azure SDK for Go. For
@@ -21,7 +21,7 @@ consumers of the SDK we recommend visiting our public developer docs at:.}
                         SECURITY.md README.md sdk/azcore/CHANGELOG.md \\\
                         sdk/azcore/README.md
 
-Name:           %{goname}
+Name:           golang-github-azure-sdk-internal
 Release:        %autorelease
 Summary:        This repository is for active development of the Azure SDK for Go. For consumers of the SDK we recommend visiting our public developer docs at:
 
