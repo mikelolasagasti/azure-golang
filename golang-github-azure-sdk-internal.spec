@@ -10,17 +10,16 @@ Version:                1.3.0
 %gometa -f
 
 %global common_description %{expand:
-This repository is for active development of the Azure SDK for Go. For
-consumers of the SDK we recommend visiting our public developer docs at:.}
+Azure SDK for Go - internal library.}
 
-%global golicenses      NOTICE.txt LICENSE.txt sdk/azcore/LICENSE.txt
+%global golicenses      NOTICE.txt LICENSE.txt sdk/internal/LICENSE.txt
 %global godocs          CODE_OF_CONDUCT.md CONTRIBUTING.md SUPPORT.md\\\
-                        SECURITY.md README.md sdk/azcore/CHANGELOG.md \\\
-                        sdk/azcore/README.md
+                        SECURITY.md README.md sdk/internal/CHANGELOG.md \\\
+                        sdk/internal/README.md
 
 Name:           %{goname}
 Release:        %autorelease
-Summary:        This repository is for active development of the Azure SDK for Go. For consumers of the SDK we recommend visiting our public developer docs at:
+Summary:        Azure SDK for Go - internal library
 
 License:        MIT
 URL:            %{gourl}
@@ -34,12 +33,9 @@ Source:         %{gosource}
 %goprep
 %autopatch -p1
 
-rm -rf .github documentation eng profile
-pushd sdk
-rm -rf azcore azidentity containers data keyvault messaging monitor resourcemanager samples security storage template
-popd
-
+# move building library to the root to match goipath
 mv sdk/internal/* .
+rm -rf .github documentation eng profile sdk
 
 %generate_buildrequires
 %go_generate_buildrequires
@@ -54,7 +50,6 @@ for test in "TestRecordingHTTPClient_Do" \
 awk -i inplace '/^func.*'"$test"'\(/ { print; print "\tt.Skip(\"disabled failing test\")"; next}1' $(grep -rl $test)
 done
 %gocheck -d recording
-#  -d sdk/internal/poller
 %endif
 
 %gopkgfiles
